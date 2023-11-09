@@ -20,11 +20,15 @@ langchain.verbose = False
 @st.cache_resource
 def init_connection():
     return MongoClient(**st.secrets["mongo"])
-client = init_connection()
-@st.cache_data(ttl=600)
-def get_data():
-    db = client.chat_data
-    return "connected"
+try:
+    client = init_connection()
+    db= client.chat_data
+    print("connected")
+except:
+    print("failed")
+
+
+
 
 # try:
 #     client=MongoClient(**st.secrets["mongo"])                                                                                   # Creating connection with mongoDB Database
