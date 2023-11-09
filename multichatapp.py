@@ -17,12 +17,26 @@ from pymongo import MongoClient
 import langchain
 langchain.verbose = False
 
-try:
-    client=MongoClient('localhost',27017)                                                                                   # Creating connection with mongoDB Database
-    db=client.chat_data
-    print("connected")
-except:
-    print("not")
+@st.cache_resource
+def init_connection():
+    return pymongo.MongoClient(**st.secrets["mongo"])
+client = init_connection()
+@st.cache_data(ttl=600)
+def get_data():
+    db = client.chat_data
+    return "connected"
+
+    
+    
+    
+    
+    
+# try:
+#     client=MongoClient(**st.secrets["mongo"])                                                                                   # Creating connection with mongoDB Database
+#     db=client.chat_data
+#     print("connected")
+# except:
+#     print("not")
     
 
 
