@@ -104,7 +104,7 @@ with st.sidebar:
 def main():
      
      st.header("Chat with any PDF file 💬")
-    
+     openai.api_key=st.secrets['openai_key']
      load_dotenv()                                                                                                        #  Setting up an envirnment for openai with authentication key
      pdf = st.file_uploader("Upload your PDF🔎", type='pdf')                                                              # To upload a pdf to the app
 
