@@ -26,11 +26,6 @@ def get_data():
     db = client.chat_data
     return "connected"
 
-    
-    
-    
-    
-    
 # try:
 #     client=MongoClient(**st.secrets["mongo"])                                                                                   # Creating connection with mongoDB Database
 #     db=client.chat_data
