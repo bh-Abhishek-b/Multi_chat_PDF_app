@@ -17,11 +17,13 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import langchain
 langchain.verbose = False
-
+@st.cache_resource
+def init_connection():
 # Create a new client and connect to the server
-client = MongoClient(st.secrets['uri'], server_api=ServerApi('1'))
+    return MongoClient(st.secrets['uri'], server_api=ServerApi('1'))
 # Send a ping to confirm a successful connection
 try:
+    client = init_connection()
     client.admin.command('ping')
     db=client["chat_data"]
     collection=db['c1']
