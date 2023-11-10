@@ -19,7 +19,7 @@ langchain.verbose = False
 
 @st.cache_resource
 def init_connection():
-    return MongoClient(**st.secrets["mongo"])
+    return MongoClient(**st.secrets["mongo"])                                                                            # Creating connection with MongoDB Database
 try:
     client = init_connection()
     db= client.chat_data
@@ -29,16 +29,6 @@ except:
 
 
 
-
-# try:
-#     client=MongoClient(**st.secrets["mongo"])                                                                                   # Creating connection with mongoDB Database
-#     db=client.chat_data
-#     print("connected")
-# except:
-#     print("not")
-    
-
-
 def new_button():                                                                                                           # Call-back function for New Chat Button
     st.session_state.is_chatting= True
     st.session_state.messages = []
@@ -46,10 +36,6 @@ def new_button():                                                               
         
 def old_data():                                                                                                             # Call-back function for Displaying old conversations
 
-        # for i, (user_msg,bot_response) in enumerate(st.session_state.chat_history):
-        #     with st.expander(f" Chat- {i+1 ,user_msg}"):
-        #         st.markdown(f"User: {user_msg}")
-        #         st.markdown(f"Assistant: {bot_response}")
         for i,j in enumerate(db['c1'].find({}, {'_id': False})):
             with st.expander((f"chat {i+1}")):    
                 st.write(j)
@@ -96,13 +82,7 @@ with st.sidebar:
           
     with st.form("form",clear_on_submit=False):                                                                             # Creating Old Conversations form which contains all the previous chats
         st.title("Old Conversions")
-        # for message in st.session_state.messages:
-        #     if message["role"] == "user":
-        #         with st.expander("User"):
-        #             st.markdown(message["content"])
-        #     elif message["role"] == "assistant":
-        #         with st.expander("Assistant"):
-        #             st.markdown(message["content"])
+       
         st.form_submit_button("Old Conversations",on_click=old_data())
     st.button("Clear Old Data",on_click=clear_old_data)                                                                     # Creating Clear Old chats button with call function
     
