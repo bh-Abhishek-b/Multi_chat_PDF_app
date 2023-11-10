@@ -1,4 +1,4 @@
-PDF Chatbot with Enhanced Interaction Experience
+## PDF Chatbot with Enhanced Interaction Experience
 
 This application empowers users to engage in meaningful interactions with textual content extracted from uploaded PDF documents. 
 The central focus of this project is to enable multi-turn conversations with the chatbot while ensuring the preservation of conversation context and history.
