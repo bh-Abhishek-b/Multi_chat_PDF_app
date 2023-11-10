@@ -31,7 +31,7 @@ try:
 except Exception as e:
     print(e)
 
-
+openai_api_key =st.secrets['OPENAI_API_KEY']
 def new_button():                                                                                                           # Call-back function for New Chat Button
     st.session_state.is_chatting= True
     st.session_state.messages = []
