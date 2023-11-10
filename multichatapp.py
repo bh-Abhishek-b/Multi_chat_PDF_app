@@ -27,9 +27,9 @@ try:
     client.admin.command('ping')
     db=client["chat_data"]
     collection=db['c1']
-    print("Pinged your deployment. You successfully connected to MongoDB!")
+    st.write("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
-    print(e)
+    st.write(e)
 
 openai_api_key =st.secrets['OPENAI_API_KEY']
 # def new_button():                                                                                                           # Call-back function for New Chat Button
