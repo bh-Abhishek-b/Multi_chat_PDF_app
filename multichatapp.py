@@ -175,7 +175,7 @@ def main():
              
              
              dic=dict(st.session_state.chat_history)                                                                        # Creating dictionary for adding the data to Database
-             st.button("End Chat",on_click=insert_data,args=(dic,))                                                         # Creating of End chat for storing the last generated data to Database
+             st.button("End Chat",on_click=insert_data,args=(dic,),help="click to save the chat")                                                         # Creating of End chat for storing the last generated data to Database
                 
              
                         
